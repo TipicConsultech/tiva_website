@@ -8,7 +8,8 @@ export default function Contactus() {
     name: '',
     email: '',
     queries: '',
-    mobile: ''
+    mobile: '',
+    type:0
   });
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [errors, setErrors] = useState({});
@@ -40,7 +41,7 @@ export default function Contactus() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${host}/api/contactUs`,formData,);
+        `${host}/api/saveMultiEnquiry`,formData,);
       console.log('Response:', response.data);
       if (response.data.message === "Contact information saved successfully") {
         setSubmissionStatus('success');
